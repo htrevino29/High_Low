@@ -1,35 +1,56 @@
 <?php
 
-
+// Dump arg vars
+// var_dump($argv);
 
 //random number selector 
-$number = mt_rand ( 1 , 100 );
+$min = 1;
+$max = 100;
 
-// commented out for actual game play.
-var_dump($number);
+// if argument count is = to 3. check value of index 1 and 2 to be numeric and make them the min and max.
+if ($argc === 3 && is_numeric($argv[1]) && is_numeric($argv[2])){
+	$min = $argv[1];
+	$max = $argv[2];
+}
 
-//prompt for user to input a number
-fwrite(STDOUT, 'Pick a number between 1 - 100!'.PHP_EOL);
+$number = mt_rand ( $min , $max );
+
+//***** uncomment to keep sanity in check.*****
+// var_dump($number);
+
+//prompt for user name, input a number.
+fwrite(STDOUT, 'Halt who goes there!? '.PHP_EOL);
+$firstName = trim(fgets(STDIN).PHP_EOL);
+fwrite(STDOUT, "so.... $firstName you want to play a game!?".PHP_EOL);
+
+fwrite(STDOUT, "Type a number between $min - $max then hit enter.".PHP_EOL);
 
 // keep count of rounds
 $round = 0;
 
 do{
-	$round += 1;
-	echo("Guess Count ".$round).PHP_EOL;
-	$userAnswer = trim(fgets(STDIN));
-	// var_dump($userAnswer);
-	$userAnswerInt = (int)$userAnswer;
-	var_dump($userAnswerInt);
 
+	$round += 1;
+	$userAnswer = trim(fgets(STDIN));
+	$userAnswerInt = (int)$userAnswer;  // converts user input from string to integer
+	
 	if ($userAnswerInt > $number) {
-	    echo "too high chump!".PHP_EOL;
+	    echo "Too high Chump!".PHP_EOL;
+
 	} elseif ($userAnswerInt < $number) {
-	    echo "too low...".PHP_EOL;
+	    echo "Too low...TRY AGAIN!".PHP_EOL;
+
 	} else {
-	    echo "Sold! YOU ARE A WINNER!".PHP_EOL;
+	    echo "FINALLY!".PHP_EOL;
+	    echo("Guess Count ".$round. " better luck next time Chump").PHP_EOL;
+	    
 	}
 
 } while ($number !== $userAnswerInt);
+
+// Exit with 0 errors
+exit(0);
+
+
 
 
