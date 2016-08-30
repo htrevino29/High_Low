@@ -11,8 +11,12 @@ var_dump($number);
 //prompt for user to input a number
 fwrite(STDOUT, 'Pick a number between 1 - 100!'.PHP_EOL);
 
+// keep count of rounds
+$round = 0;
+
 do{
-	
+	$round += 1;
+	echo("Guess Count ".$round).PHP_EOL;
 	$userAnswer = trim(fgets(STDIN));
 	// var_dump($userAnswer);
 	$userAnswerInt = (int)$userAnswer;
