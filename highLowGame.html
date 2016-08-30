@@ -33,23 +33,25 @@ do{
 	$round += 1;
 	$userAnswer = trim(fgets(STDIN));
 	$userAnswerInt = (int)$userAnswer;  // converts user input from string to integer
-	
-	if ($userAnswerInt > $number) {
-	    echo "Too high Chump!".PHP_EOL;
+	if (is_numeric($userAnswer)){
+		if ($userAnswerInt > $number) {
+		    echo "Too high Chump!".PHP_EOL;
 
-	} elseif ($userAnswerInt < $number) {
-	    echo "Too low...TRY AGAIN!".PHP_EOL;
+		} elseif ($userAnswerInt < $number) {
+		    echo "Too low...TRY AGAIN!".PHP_EOL;
+
+		} else {
+		    echo "FINALLY!".PHP_EOL;
+		    echo "Guess Count ".$round. " better luck next time Chump".PHP_EOL;
+		}
 
 	} else {
-	    echo "FINALLY!".PHP_EOL;
-	    echo("Guess Count ".$round. " better luck next time Chump").PHP_EOL;
-	    
+		echo "NUMBERS ONLY..HUMAN!";
 	}
 
 } while ($number !== $userAnswerInt);
 
-// Exit with 0 errors
-exit(0);
+
 
 
 
