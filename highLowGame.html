@@ -4,21 +4,28 @@
 
 //random number selector 
 $number = mt_rand ( 1 , 100 );
-echo $number;
-//prompt for user to input a number
-fwrite(STDOUT, 'Pick a number between 1 - 100! ');
 
+// commented out for actual game play.
+var_dump($number);
+
+//prompt for user to input a number
+fwrite(STDOUT, 'Pick a number between 1 - 100!'.PHP_EOL);
 
 do{
+	
+	$userAnswer = trim(fgets(STDIN));
+	// var_dump($userAnswer);
+	$userAnswerInt = (int)$userAnswer;
+	var_dump($userAnswerInt);
 
-	$userAnswer = fgets(STDIN);
-	echo $userAnswer;
-
-	if ($userAnswer > $number) {
-	    echo "too high chump!";
-	} elseif ($userAnswer < $number) {
-	    echo "too low...";
+	if ($userAnswerInt > $number) {
+	    echo "too high chump!".PHP_EOL;
+	} elseif ($userAnswerInt < $number) {
+	    echo "too low...".PHP_EOL;
 	} else {
-	    echo "Sold! YOU ARE A WINNER!";
+	    echo "Sold! YOU ARE A WINNER!".PHP_EOL;
 	}
-} while ($number !== $userAnswer);
+
+} while ($number !== $userAnswerInt);
+
+
