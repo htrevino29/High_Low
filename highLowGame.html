@@ -1,0 +1,24 @@
+<?php
+
+
+
+//random number selector 
+$number = mt_rand ( 1 , 100 );
+echo $number;
+//prompt for user to input a number
+fwrite(STDOUT, 'Pick a number between 1 - 100! ');
+
+
+do{
+
+	$userAnswer = fgets(STDIN);
+	echo $userAnswer;
+
+	if ($userAnswer > $number) {
+	    echo "too high chump!";
+	} elseif ($userAnswer < $number) {
+	    echo "too low...";
+	} else {
+	    echo "Sold! YOU ARE A WINNER!";
+	}
+} while ($number !== $userAnswer);
